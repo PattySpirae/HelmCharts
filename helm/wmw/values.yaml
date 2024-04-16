@@ -1,0 +1,89 @@
+wave:
+  image:
+    repository: spiraeadmin/5.15:apr16-peak
+  services:
+    ports:
+      - name: port80
+        protocol: TCP
+        port: 80
+        targetPort: 80
+      - name: port443
+        protocol: TCP      
+        port: 443
+        targetPort: 443
+      - name: port3306
+        protocol: TCP
+        port: 3306
+        targetPort: 3306
+      - name: port4000
+        protocol: TCP
+        port: 4000
+        targetPort: 4000
+      - name: port5000
+        protocol: TCP
+        port: 5000
+        targetPort: 5000
+      - name: port5001
+        protocol: TCP
+        port: 5001
+        targetPort: 5001
+        nodePort: 35001
+      - name: port5002
+        protocol: TCP
+        port: 5002
+        targetPort: 5002
+      - name: port5003
+        protocol: TCP
+        port: 5003
+        targetPort: 5003
+      - name: port5004
+        protocol: TCP
+        port: 5004
+        targetPort: 5004
+      - name: port5005
+        protocol: TCP
+        port: 5005
+        targetPort: 5005
+      - name: port5006
+        protocol: TCP
+        port: 5006
+        targetPort: 5006
+      - name: port5007
+        protocol: TCP
+        port: 5007
+        targetPort: 5007
+      - name: port5008
+        protocol: TCP
+        port: 5008
+        targetPort: 5008
+      - name: port5009
+        protocol: TCP
+        port: 5009
+        targetPort: 5009
+      - name: port5010
+        protocol: TCP
+        port: 5010
+        targetPort: 5010
+      - name: port5432
+        protocol: TCP
+        port: 5432
+        targetPort: 5432
+      - name: port5050
+        protocol: TCP
+        port: 5050
+        targetPort: 5050
+      - name: port8200
+        protocol: TCP
+        port: 8200
+        targetPort: 8200                                                
+    type: NodePort
+  tolerations:
+    - key: "app"
+      operator: "Equal"
+      value: "wave"
+      effect: "NoSchedule"
+  pv:
+    wave5: "/mnt/data/wave/Wave5"
+
+
+ 

@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wmw.fullname" . }}-wave
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "wmw.fullname" . }}-wave
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ include "wmw.fullname" . }}-wave
+    spec:
+      containers:
+      - name: wave
+        image: "{{ .Values.wave.image.repository }}"
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "fleming*9918"
+        ports:
+        - containerPort: 80
+        - containerPort: 3306
+        - containerPort: 443
+        - containerPort: 4000
+        - containerPort: 5000 
+        - containerPort: 5001
+        - containerPort: 5002         
+        - containerPort: 5003
+        - containerPort: 5004
+        - containerPort: 5005
+        - containerPort: 5006
+        - containerPort: 5007
+        - containerPort: 5008
+        - containerPort: 5009
+        - containerPort: 5010
+        - containerPort: 5432
+        - containerPort: 5050
+        - containerPort: 8200                  
+        volumeMounts:
+        - name: wave5-volume
+          mountPath: /home/wave/Wave5
+        - name: token
+          mountPath: /home/wave/
+        securityContext:
+          privileged: true  # This allows using privileged mode
+          capabilities:
+            add:
+            - SYS_RAWIO  # Allow access to /dev/mem
+      {{- with .Values.wave.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+      - name: wave5-volume
+        persistentVolumeClaim:
+          claimName: {{ include "wmw.fullname" . }}-pvc-wave5
+      - name: token
+        downwardAPI:
+          items:
+          - path: "name"
+            fieldRef:
+              fieldPath: metadata.name
+          - path: "uid"
+            fieldRef:
+              fieldPath: metadata.uid
+
+

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "wmw.fullname" . }}-wave
+spec:
+  selector:
+    app: {{ include "wmw.fullname" . }}-wave
+  ports:
+ {{- range .Values.wave.services.ports }}
+  - protocol: TCP
+    port: {{ .port }}
+    name: {{ .name }}
+    targetPort: {{ .targetPort }}
+{{- end }}
+  type: NodePort
