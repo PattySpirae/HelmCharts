@@ -4,7 +4,7 @@ metadata:
   name: {{ include "wmw.fullname" . }}-pvc-wave5
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 10Gi

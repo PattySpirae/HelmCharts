@@ -7,7 +7,7 @@ spec:
     storage: 10Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: {{ .Values.wave.pv.wave5 }}
