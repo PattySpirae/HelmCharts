@@ -4,10 +4,10 @@ metadata:
   name: {{ include "wmw.fullname" . }}-pv-wave5
 spec:
   capacity:
-    storage: 10Gi
+    storage: 12Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: {{ .Values.wave.pv.wave5 }}
