@@ -34,4 +34,4 @@ if [ $? -ne 0 ]; then
   echo "Error: Helm installation failed."
 fi
 
-echo "Helm chart '$username' installed successfully on node '$nodeName'."
+echo "$username' installed successfully on '$nodeName'."

@@ -85,6 +85,6 @@ wave:
   pv:
     wave5: "/mnt/data/wave/Wave5"
   nodeSelector:
-    nodename: mgk3-virtual-machine
+    nodename: mgk2-virtual-machine
 
  
