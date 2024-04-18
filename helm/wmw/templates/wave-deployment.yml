@@ -12,6 +12,8 @@ spec:
       labels:
         app: {{ include "wmw.fullname" . }}-wave
     spec:
+      nodeSelector: 
+        kubernetes.io/hostname: {{ .Values.wave.nodeSelector.nodename }}
       containers:
       - name: wave
         image: "{{ .Values.wave.image.repository }}"
